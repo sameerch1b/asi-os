@@ -2,7 +2,7 @@
 
 A free, MIT-licensed starter kit that turns Claude Code into your personal **AI Operating System (AIOS)**. Audience: anyone building automations — solopreneurs, small business operators, managers, creators, AI consultants. Built by ASI Intelligence (asiintelligence.io).
 
-The kit personalizes itself to you via an `/onboard` interview, then gives you two recurring thinking skills (`/audit`, `/level-up`) to keep building leverage week over week.
+The kit personalizes itself to you via an `/onboard` interview, then gives you three recurring thinking skills (`/audit`, `/level-up`, `/grill`) to keep building leverage week over week, and to stop you building it in the wrong direction.
 
 > **ASI OS** stands for **ASI Intelligence's Operating System** — the same structure our team uses to run AI work inside real businesses, packaged as a free kit anyone can use.
 
@@ -38,9 +38,9 @@ The kit teaches personal AIOS first. Everything scales from there.
 
 ---
 
-## Two frameworks
+## Three frameworks
 
-The kit teaches two complementary frameworks. **3Ms first, Four Cs second.** Without the brain rewire, the architecture is just a folder structure.
+The kit teaches three frameworks. **3Ms first, Four Cs second, the Grill third.** Without the brain rewire, the architecture is just a folder structure. Without the Grill, the architecture makes you fast in whatever direction you were already pointed.
 
 ### The 3Ms — operator brain (how you think)
 
@@ -52,6 +52,8 @@ The kit teaches two complementary frameworks. **3Ms first, Four Cs second.** Wit
 
 Full breakdown in `references/3ms-framework.md`. The `/level-up` skill walks you through all three weekly.
 
+> *The Three Ms of AI™ is a trademark of Nate Herk. © 2026 Nate Herk. Shipped here with attribution under MIT.*
+
 ### The Four Cs — architecture (what you build)
 
 | # | Layer | One-liner | "This layer is in place" test |
@@ -61,13 +63,39 @@ Full breakdown in `references/3ms-framework.md`. The `/level-up` skill walks you
 | 3 | **Capabilities** | Knows how to do the work | A short phrase triggers a multi-step workflow that produces an artifact |
 | 4 | **Cadence** | Runs without being asked | Laptop closed. A brief lands in the inbox. A teammate messages it and gets a real answer |
 
-**Brand line:** Context. Connections. Capabilities. Cadence.
-
 Dependency graph: Context is non-skippable. Connections + Capabilities can build in parallel. Cadence is last — don't automate workflows that don't work manually.
+
+> *The Four Cs of an AIOS™ is a trademark of Nate Herk. © 2026 Nate Herk. Shipped here with attribution under MIT.*
+
+### The Grill: decision quality (whether you should)
+
+The 3Ms and the Four Cs both make you faster. Neither one checks the direction. That gap is what the Grill closes, and it is original to ASI OS.
+
+Here is the failure mode nobody warns you about. As your AIOS gets better it gets more agreeable. It has read your context files, it knows your priorities, it writes in your voice. So it starts finishing your sentences, and the thing that finishes your sentences is not the thing that catches your mistakes. You end up with a very fast, very well-informed yes-man.
+
+The Grill is an adversarial interview you run on a decision before you commit. Five stands, each attacking from a different angle:
+
+| # | Stand | It asks |
+|---|---|---|
+| 1 | **Evidence** | What do you actually know versus what are you carrying? Every load-bearing claim gets tiered: Observed, Sourced, Inferred, Assumed. Load-bearing plus Assumed is a hard stop. |
+| 2 | **Reversal** | What is the strongest case against, and under what condition is the opposite correct? "There isn't one" is not an answer. |
+| 3 | **Cost** | What does doing nothing cost, in the same units? Most decisions are compared against a fantasy, not the status quo. |
+| 4 | **Counterparty** | Whose incentive runs against yours, and what will they do about it? |
+| 5 | **Kill** | What specific, observable event would make you reverse this, by when? If nothing would, it is a belief, not a decision. |
+
+Three verdicts, no hedge: **SURVIVES**, **SURVIVES WITH CONDITIONS**, **DOES NOT SURVIVE**.
+
+**The one rule:** a Grill that comes back "looks good" has failed, not passed.
+
+**The Reckoning is the compounding half.** Because every grilled decision is logged with a kill condition and a review date, `decisions/log.md` stops being write-only. `/grill --reckon` sweeps it and pulls back everything whose kill condition fired or whose review date passed, and asks the straight question: *this fired, what now?*
+
+Over a year that produces something no audit score can. A record of your own judgment with the outcomes attached, so you find out which of your instincts are good and which ones to stop trusting. That is the real endgame of a personal operating system. Not automation. Calibration.
+
+Full method in `references/the-grill.md`.
 
 ---
 
-## What ships — 3 skills
+## What ships — 4 skills
 
 The kit is intentionally lean. Skills here are ideation prompts and thinking tools, not heavy automations. You hack on top of the structure.
 
@@ -76,8 +104,15 @@ The kit is intentionally lean. Skills here are ideation prompts and thinking too
 | `/onboard` | Setup wizard (one-time) | Day 1, immediately after clone. 7-question interview. Generates Day-1 file set + fills `CLAUDE.md`. |
 | `/audit` | Recurring thinking skill | Day 7, then weekly. Four-Cs gap report. Read-only. Watch the score climb. |
 | `/level-up` | Recurring thinking skill | Day 14, then weekly. 3Ms interview (Mindset → Method → Machine). One run = one shipped artifact. |
+| `/grill` | On-demand + monthly sweep | Any hard-to-reverse call, before you commit. Five Stands, one verdict, one logged kill condition. `--reckon` sweeps the log for what's come due. |
 
-`/audit` asks *"is the AIOS built right?"* (form). `/level-up` asks *"what business leverage am I missing?"* (function). They work in series — fix structure first, then capability planning becomes meaningful.
+Three questions, three domains:
+
+- `/audit` asks *"is the AIOS built right?"* (form)
+- `/level-up` asks *"what business leverage am I missing?"* (function)
+- `/grill` asks *"should I do this at all, and how would I know if I was wrong?"* (judgment)
+
+The first two work in series: fix structure first, then capability planning becomes meaningful. `/grill` cuts across both. It runs on any real decision, and it runs inside `/level-up` Phase 2 before an automation spec gets logged, so you don't automate your way efficiently into the wrong thing.
 
 ---
 
@@ -89,6 +124,8 @@ The kit is intentionally lean. Skills here are ideation prompts and thinking too
 4. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
 5. **Day 14:** run `/level-up`. The 3Ms interview surfaces one automation worth building. Build it.
 6. **Week 3+:** weekly `/level-up` ritual. One shipped artifact per week.
+7. **Any hard call, any time:** run `/grill` before you commit. Five Stands, one verdict, one kill condition in the log.
+8. **Monthly:** run `/grill --reckon`. See which kill conditions fired and which calls came due. This is where the compounding shows up.
 
 ---
 
@@ -105,7 +142,8 @@ ASI-OS/
 ├── connections.md                   ← Registry of every system your AIOS can reach
 ├── context/                         ← About you, your business (filled by /onboard)
 ├── references/
-│   └── 3ms-framework.md             ← The operator brain
+│   ├── 3ms-framework.md             ← The operator brain
+│   └── the-grill.md                 ← The decision pressure test
 ├── decisions/
 │   └── log.md                       ← Append-only record of what was decided and why
 ├── archives/                        ← Old stuff. Don't delete. Move here.
@@ -113,7 +151,8 @@ ASI-OS/
     └── skills/
         ├── onboard/SKILL.md
         ├── audit/SKILL.md
-        └── level-up/SKILL.md
+        ├── level-up/SKILL.md
+        └── grill/SKILL.md
 ```
 
 See `EXPANSIONS.md` for what to add as you grow (`projects/`, `templates/`, `scripts/`, `.claude/agents/`, sub-OS folders, etc.).
@@ -124,6 +163,10 @@ See `EXPANSIONS.md` for what to add as you grow (`projects/`, `templates/`, `scr
 
 MIT License.
 
-Based on AIS-OS by Nate Herk (MIT License). Modified and distributed by ASI Intelligence (asiintelligence.io).
+**Upstream.** This kit is a fork of [AIS-OS by Nate Herk](https://github.com/nateherkai/AIS-OS), MIT licensed. The Four Cs architecture, the 3Ms framework, the `/onboard`, `/audit` and `/level-up` skills, and the folder structure are his work, shipped here under MIT with attribution. **The Three Ms of AI™** and **The Four Cs of an AIOS™** are trademarks of Nate Herk, © 2026 Nate Herk. Use them freely; don't repackage them as your own.
 
-More from the team behind this kit: [asiintelligence.io](https://asiintelligence.io).
+**Added by ASI Intelligence.** The Grill: the Five Stands method (`references/the-grill.md`), the `/grill` skill, the pre-registered kill condition, and the Reckoning sweep. © 2026 ASI Intelligence, MIT licensed, and yours to fork on the same terms.
+
+**Maintained by** Sameer Chib, co-founder of ASI Intelligence. [LinkedIn](https://www.linkedin.com/in/sameer-chib) · [asiintelligence.io](https://asiintelligence.io)
+
+If the kit is useful, the fastest way to say so is a star and a note on LinkedIn about what you built with it.

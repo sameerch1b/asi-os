@@ -3,7 +3,8 @@ name: level-up
 description: Use weekly to find and ship one new automation. Walks the 3Ms interview — Mindset (find the candidate) → Method (scope one) → Machine (build it). Trigger on "let's level up", "what should I automate next", "find me leverage this week", or as a Friday ritual. One run = one shipped artifact.
 ---
 
-> *Part of ASI OS by ASI Intelligence.*
+> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
+> *The Three Ms of AI™ is a trademark of Nate Herk. Shipped in ASI OS with attribution under MIT.*
 
 ## What this skill does
 
@@ -14,6 +15,7 @@ This is the brain-rewire mechanism. The kit doesn't need cron jobs to anchor beh
 ## What `/level-up` is NOT
 
 - Not `/audit`. `/audit` is structural ("is the AIOS built right?"). `/level-up` is functional ("what business leverage am I missing?"). Run `/audit` first if structure is messy.
+- Not `/grill`. `/grill` is judgment ("should I do this at all?"). `/level-up` calls it in Phase 2 on its own spec, but a real business decision that isn't about building an automation goes straight to `/grill`.
 - Not a multi-candidate planner. One run = one shipped artifact.
 - Not a coach. The user does the thinking. The skill conducts the interview.
 
@@ -91,7 +93,20 @@ If the user can't articulate any of the five: *"If you can't explain it to a per
 
 Plus a specific metric (response time, error rate, conversion rate, time-to-completion). **If the user can't name a bucket and a metric, skill stops.** *"If your automation doesn't move a number, why are you building it?"*
 
-**Output of Phase 2:** scoped automation spec written to `decisions/log.md` as a dated entry with all five answers + autonomy level + KPI. Durable record of what was decided and why.
+**Step 6 — Grill it before it goes in the log.**
+
+The spec is now a decision, and it is one the AIOS helped produce. That is exactly the kind that gets logged without resistance. Run the Grill on it before writing anything.
+
+Run `/grill` on the scoped spec, or run the Five Stands inline from `references/the-grill.md` if invoking the skill mid-flow is awkward. Either way the Grill knows this decision is AIOS-originated and argues against it harder, not softer. Never grade your own homework.
+
+The two stands that bite most often here:
+
+- **Stand 1 (Evidence).** The frequency claim. "I do this three times a week" is almost always Assumed, not Observed. If the automation's whole case rests on it, go and count before building.
+- **Stand 5 (Kill).** What would make you tear this automation down? That answer becomes the Kill Switch from the Machine layer, pre-registered with a date instead of decided later when you are attached to it.
+
+If the verdict is `DOES NOT SURVIVE`, log that. A killed spec is a good week: you found out for the cost of an interview instead of the cost of a build.
+
+**Output of Phase 2:** scoped automation spec written to `decisions/log.md` as a dated entry with all five answers + autonomy level + KPI + the Grill verdict, kill condition and review date. Durable record of what was decided, why, and what would reverse it.
 
 ### Phase 3 — Machine handoff (build it)
 
@@ -115,7 +130,7 @@ Once chosen, route to the appropriate scaffolder:
 ---
 bike-method-phase: 1  # Phase 1 — Training wheels. Run manually first.
 three-ms-attribution: |
-  Adapted from The 3Ms, part of ASI OS by ASI Intelligence.
+  Adapted from The Three Ms of AI™ © 2026 Nate Herk.
 ---
 ```
 
@@ -144,7 +159,7 @@ Every `/level-up` run produces:
 6. **Tie-to-KPI is mandatory.** If user can't name bucket + metric, skill stops.
 7. **Bike Method ships into every artifact.** `bike-method-phase: 1` in frontmatter.
 8. **Read-only on user files except `decisions/log.md` and the new artifact.** Don't modify other existing files.
-9. **Attribution on output.** Every report and every scaffolded artifact references the framework.
+9. **Trademark + attribution on output.** Every report and every scaffolded artifact references the framework.
 
 ## Verification (for the implementer)
 
@@ -156,4 +171,4 @@ Every `/level-up` run produces:
 
 ---
 
-> *Part of ASI OS by ASI Intelligence.*
+> *The Three Ms of AI™ is a trademark of Nate Herk. © 2026 Nate Herk. All rights reserved.*

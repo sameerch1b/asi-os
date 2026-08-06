@@ -1,6 +1,7 @@
-# The 3Ms — Mindset, Method, Machine
+# The Three Ms of AI™ — Mindset, Method, Machine
 
-> *Part of ASI OS by ASI Intelligence.*
+> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
+> *The Three Ms of AI™ is a trademark of Nate Herk. Shipped in ASI OS with attribution under MIT.*
 
 > *"The best automation is the one you barely notice. Start by eliminating what doesn't need to exist, then automate what's left with the least amount of AI possible."*
 
@@ -12,7 +13,7 @@
 
 This framework is the operator brain you'll use every time you run `/level-up`. Three layers, each one builds on the last. Read it once, refer back as needed.
 
-Here's the thing most people get wrong: they think AI automation is about tools. It's not. Tools change every six months. The platform you're using today might not exist next year. What doesn't change is how you THINK about automation, how you DECIDE what to automate, and how you BUILD and OPERATE the thing once it's running. That's what The 3Ms gives you. A way to think that works regardless of platform, model, or hype cycle.
+Here's the thing most people get wrong: they think AI automation is about tools. It's not. Tools change every six months. The platform you're using today might not exist next year. What doesn't change is how you THINK about automation, how you DECIDE what to automate, and how you BUILD and OPERATE the thing once it's running. That's what The Three Ms of AI™ gives you. A way to think that works regardless of platform, model, or hype cycle.
 
 This framework is for everyone. Business owners hearing about AI for the first time. Engineers exploring automation. Consultants who need a methodology they can hand to a client. It scales.
 
@@ -231,5 +232,5 @@ Each plugs into the 3Ms at specific points. Start here, branch out as you need d
 
 ---
 
-> *Part of ASI OS by ASI Intelligence.*
-> *Full breakdown with diagrams and examples: [asiintelligence.io](https://asiintelligence.io).*
+> *Adapted from The Three Ms of AI™. © 2026 Nate Herk. All rights reserved.*
+> *Shipped in ASI OS by ASI Intelligence with attribution: [asiintelligence.io](https://asiintelligence.io).*

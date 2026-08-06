@@ -1,6 +1,6 @@
 # EXPANSIONS — what to add as you grow
 
-The kit ships lean on purpose. Three skills, six folders, one framework reference. That's it. As you use it, you'll outgrow the base — this guide tells you what to add, when, and why.
+The kit ships lean on purpose. Four skills, six folders, two framework references. That's it. As you use it, you'll outgrow the base — this guide tells you what to add, when, and why.
 
 The AIOS structure should look like a small, well-run business. Not a hoarder's basement.
 
@@ -12,10 +12,10 @@ The AIOS structure should look like a small, well-run business. Not a hoarder's 
 |---|---|
 | `context/` | About you, your business, your priorities. Filled by `/onboard`. |
 | `references/` | Frameworks, voice samples, API guides, SOPs as you build them. |
-| `decisions/log.md` | Append-only record of what was decided and why. |
+| `decisions/log.md` | Append-only record of what was decided and why. Grilled entries carry a kill condition and a review date. |
 | `archives/` | Old files. Don't delete — move here. |
 | `connections.md` | Registry of every system your AIOS can reach. |
-| `.claude/skills/` | Your skills: `/onboard`, `/audit`, `/level-up`. Add more via `/level-up`. |
+| `.claude/skills/` | Your skills: `/onboard`, `/audit`, `/level-up`, `/grill`. Add more via `/level-up`. |
 | `asi-os-intake.md` | Source-of-truth for `/onboard`. Edit and re-run any time. |
 | `CLAUDE.md` | Root operating manual. Filled by `/onboard`. Edit when your role/voice changes. |
 
@@ -41,6 +41,8 @@ The AIOS structure should look like a small, well-run business. Not a hoarder's 
 When each surface gets routinely touched:
 
 - `decisions/log.md` — every meaningful decision (`/level-up` Phase 2 captures these automatically)
+- `/grill`: any call that's expensive to reverse, run it *before* you commit. Once you've told someone, the interview turns into justification and the output is worthless.
+- `/grill --reckon`: monthly. Sweeps the log for fired kill conditions and passed review dates. This is the loop that makes the log worth keeping.
 - `archives/` — quarterly cleanup; move stale projects, deprecated skills, old intake versions
 - `references/sops/` — when a process gets re-run by someone new, write the SOP
 - `connections.md` — every time a new tool gets wired in, add a row

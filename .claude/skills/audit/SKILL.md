@@ -60,7 +60,8 @@ Don't penalize for non-canonical names if equivalent intent is captured elsewher
 | Identity / role / voice captured | 5 | CLAUDE.md mentions who the user is + role/mission, OR `.claude/rules/*.md` exists |
 | Persistent memory exists with multiple entries | 5 | MEMORY.md exists with >3 entries, OR `memory/` has >3 files |
 | Reference docs exist | 5 | `references/`, `docs/`, or `sops/` has ≥1 file |
-| Decisions captured | 5 | `decisions/log.md` or equivalent has ≥1 entry |
+| Decisions captured | 3 | `decisions/log.md` or equivalent has ≥1 entry |
+| Decisions are checkable | 2 | ≥1 entry carries a `Kill condition:` and a `Review:` date (a grilled entry). A log with no kill conditions is write-only — it records what was decided but can never tell you whether you were right. |
 
 #### Connections (25 pts) — domain-aware, mechanism-agnostic
 
@@ -93,7 +94,7 @@ A "reachable" connection counts via ANY mechanism: MCP, script, export pipeline,
 | Criterion | Points | How to detect |
 |---|---|---|
 | 3+ skills installed | 10 | Count `.claude/skills/*/SKILL.md` |
-| 1+ user-built skill | 10 | Skill names not in: `onboard`, `audit`, `level-up`, `skill-creator`, `skill-builder`, `decision`, `connect`, `connect-check`, `memory-prune`, `scaffold-skill`, `scaffold-agent`, `draft`, `standup` (canonical ASI OS + Anthropic shipped skills) |
+| 1+ user-built skill | 10 | Skill names not in: `onboard`, `audit`, `level-up`, `grill`, `skill-creator`, `skill-builder`, `decision`, `connect`, `connect-check`, `memory-prune`, `scaffold-skill`, `scaffold-agent`, `draft`, `standup` (canonical ASI OS + Anthropic shipped skills) |
 | 1+ agent defined | 5 | Count `.claude/agents/*.md` ≥ 1 |
 
 #### Cadence (25 pts)
@@ -117,6 +118,8 @@ For each criterion that lost points: leverage = (points lost) × (impact multipl
 - All connections read-only: **2x** (viewer, not an OS)
 - 0 reference guides for connected tools: **1.5x** (every future skill re-researches the same APIs)
 - No decisions log: **1.5x**
+- Decisions log exists but no entry carries a kill condition: **1.5x** (write-only log — you can never score your own judgment)
+- Overdue items sitting in the log: **1.5x** (fired kill conditions or passed review dates that nobody has looked at)
 - All others: **1x**
 
 Sort gaps by leverage descending. Take top 3. For each, write a one-line concrete next step:
@@ -164,7 +167,10 @@ Cadence        {bar}  {n}/25  {label}
 
 ---
 Structural gaps only. To explore CAPABILITY gaps (what your AIOS could DO that it can't yet), run /level-up after this audit.
+{If the log has any fired kill condition or passed review date, add: "N decision(s) have come due — run /grill --reckon."}
 ```
+
+**One extra read during Step 1:** scan `decisions/log.md` for `Kill condition:` and `Review:` lines. Count entries where the review date has passed or the kill condition is plainly met. That count feeds both the Context score and the closing line above. Don't grill anything here — the audit only reports that they are due.
 
 ### Step 5: Offer to save the report
 

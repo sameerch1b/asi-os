@@ -1,7 +1,11 @@
 MIT License
 
 Copyright (c) 2026 Nate Herk
-Modified and distributed by ASI Intelligence (asiintelligence.io).
+Copyright (c) 2026 ASI Intelligence (asiintelligence.io)
+
+Original work: AIS-OS by Nate Herk (https://github.com/nateherkai/AIS-OS).
+Modified and distributed by ASI Intelligence. Additions by ASI Intelligence
+are The Grill: references/the-grill.md and .claude/skills/grill/SKILL.md.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -13,9 +17,10 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
-The Three Ms of AI™ is a trademark of Nate Herk. The framework content in
-references/3ms-framework.md is shared under the same MIT terms; the trademark
-on the name is reserved.
+The Three Ms of AI™ and The Four Cs of an AIOS™ are trademarks of Nate Herk.
+The framework content in references/3ms-framework.md and the Four Cs material
+in README.md are shared under the same MIT terms; the trademarks on the names
+are reserved. Use freely; do not repackage as your own.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
