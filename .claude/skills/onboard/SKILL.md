@@ -68,7 +68,7 @@ Once the intake is complete, generate these files (or update if re-running). Bac
 
 ### Step 4: The closing screen
 
-Print one screen. Three lines max:
+Print one screen. Four lines max:
 
 ```
 ✓ Day 1 done. Your AIOS knows who you are, what you sell, what matters this quarter, and how you sound.
@@ -76,7 +76,10 @@ Print one screen. Three lines max:
 Today: ask me — "what should I focus on this week?"
 Tomorrow: pick one tool from connections.md and wire it up (manual MCP install or write a small API script + save references/{tool}-api.md).
 Day 7: run /audit to see your score.
+Any hard call, any time: run /grill before you commit. It's the one skill here that argues with you.
 ```
+
+The `/grill` line is not optional. It is the skill people get the most out of and the one they are least likely to discover on their own, because nobody goes looking for something that disagrees with them.
 
 When the user runs the closing prompt ("what should I focus on this week?"), respond using only the new context files. Hit:
 - 3-bullet priority list, in their voice register from Q2
