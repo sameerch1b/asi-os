@@ -85,6 +85,7 @@ After they run those two, `/onboard` handles the folder scaffolding itself.
 - **Do not stop after cloning.** A folder of files is not an installed AIOS. The interview is the install.
 - **Do not skip Q2's paste rule** by writing sample text yourself. The voice samples must be the user's own unedited writing.
 - **Do not add extra skills.** The kit ships four. Users author more through `/level-up`.
+- **If you edit a skill, edit it in both places.** The four skills are mirrored in `.claude/skills/` and `skills/`. The first is what a cloned folder loads as project skills; the second is where the plugin loader scans, because plugin components have to sit at the repo root. They must stay byte-identical. `diff -r .claude/skills skills` should print nothing.
 
 ---
 
