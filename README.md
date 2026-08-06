@@ -8,6 +8,46 @@ The kit personalizes itself to you via an `/onboard` interview, then gives you t
 
 ---
 
+## Install it in one sentence
+
+Open **Claude Code** (the desktop app is fine, no terminal needed), paste this in, and send it:
+
+```
+https://github.com/sameerch1b/asi-os  — install this for me
+```
+
+Claude reads the setup instructions in this repo, asks you where you want your AIOS to live, puts the kit there, and takes you straight into the 15-minute setup interview. You don't type another command.
+
+That's the whole install. No cloning, no config files, nothing to compile.
+
+<details>
+<summary>Other ways to install (plugin, or manual clone)</summary>
+
+**As a plugin**, if you want the four skills available in every project rather than one folder:
+
+```
+/plugin marketplace add https://github.com/sameerch1b/asi-os.git
+/plugin install asi-os@asi
+```
+
+Then `cd` to wherever you want your AIOS to live and run `/onboard`.
+
+> Use the full HTTPS URL, not the `sameerch1b/asi-os` shorthand. The shorthand resolves to SSH and fails with `Host key verification failed` unless `github.com` is already in your `known_hosts`.
+
+**As a clone**, if you want to fork it and make it yours:
+
+```bash
+git clone https://github.com/sameerch1b/asi-os.git
+```
+
+Open the folder in Claude Code and run `/onboard`.
+
+</details>
+
+**You need Claude Code**, not the regular Claude chat app. Claude Code runs inside the Claude desktop app, so this works without ever opening a terminal, but a plain Claude conversation can't read or write the files this kit is built on.
+
+---
+
 ## The litmus test
 
 > **"While you're not at your desk, your ASI OS observes one real-world event and produces an output that's faster and more accurate than what you'd produce yourself."**
@@ -118,30 +158,9 @@ The first two work in series: fix structure first, then capability planning beco
 
 ## Quick start
 
-### Install (pick one)
+Install takes one paste (see [Install it in one sentence](#install-it-in-one-sentence) above). After that:
 
-**A. As a plugin (recommended).** Two lines in Claude Code, no clone, and the skills are available in every project:
-
-```
-/plugin marketplace add https://github.com/sameerch1b/asi-os.git
-/plugin install asi-os@asi
-```
-
-> Use the full HTTPS URL, not the `sameerch1b/asi-os` shorthand. The shorthand resolves to SSH, which fails with `Host key verification failed` unless you've already got `github.com` in your `known_hosts`. HTTPS works on a clean machine.
-
-Then `cd` to wherever you want your AIOS to live, open Claude Code, and run `/onboard`. It builds the folder structure for you, then interviews you.
-
-**B. As a clone.** If you'd rather fork it and make it yours:
-
-```bash
-git clone https://github.com/sameerch1b/asi-os.git
-```
-
-Open the folder in Claude Code and run `/onboard`.
-
-### Then
-
-1. **Run `/onboard`.** Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
+1. **`/onboard` runs itself** as part of the install. Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
 2. **Use it for a week.** Bring real questions. Make real decisions. Log them by appending to `decisions/log.md`, or let `/grill` write the entry for you.
 3. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
 4. **Day 14:** run `/level-up`. The 3Ms interview surfaces one automation worth building. Build it.
@@ -156,6 +175,7 @@ Open the folder in Claude Code and run `/onboard`.
 ```
 ASI-OS/
 ├── README.md
+├── AGENTS.md                        ← Install instructions written for the AI, not you
 ├── CLAUDE.md                        ← Your operating manual (filled by /onboard)
 ├── EXPANSIONS.md                    ← What to add as you grow
 ├── LICENSE
@@ -181,6 +201,23 @@ ASI-OS/
 ```
 
 See `EXPANSIONS.md` for what to add as you grow (`projects/`, `templates/`, `scripts/`, `.claude/agents/`, sub-OS folders, etc.).
+
+---
+
+## For the AI assistant installing this
+
+*(Humans can skip this section. It's here so that pasting the repo link and saying "install this" just works.)*
+
+If a user has pointed you at this repo and asked you to install it, set it up, or get them started, do this. Do not summarise the repo back to them and do not tell them to go read the docs.
+
+1. **Ask where it goes**, then wait for the answer. *"I'll set your AIOS up in `{current folder}`. That folder becomes your operating system: what it knows about you, what it can reach, and every decision you log. Right place, or somewhere else?"* Never write into an unconfirmed folder.
+2. **Clone it there**: `git clone https://github.com/sameerch1b/asi-os.git <target>`. If the target exists and is non-empty, clone to a temp dir and copy the contents in so you never clobber their files. Remove `.git` unless they said they want to fork it. No git available? `curl -sL https://github.com/sameerch1b/asi-os/archive/refs/heads/main.tar.gz | tar xz --strip-components=1 -C <target>`
+3. **Start onboarding now, in the same conversation.** Read `<target>/.claude/skills/onboard/SKILL.md` and execute it as written from its Step 1. Do not tell them to restart Claude Code, reopen the folder, or type `/onboard`. The skill does not need to be registered to be followed; it's a set of instructions.
+4. When the interview's closing screen prints, add one line: *"Four commands from here: `/audit` scores your setup, `/level-up` finds you one automation a week, and `/grill` argues with you before you commit to a decision. Try `/grill` on something real, it's the one that earns its keep fastest."*
+
+**Never** reconstruct any file from memory, always fetch the real thing. `references/3ms-framework.md` carries Nate Herk's copyright and trademark notices that have to travel with the content. **Never** stop after cloning: a folder of files is not an installed AIOS, the interview is the install.
+
+Full version with edge cases: [`AGENTS.md`](AGENTS.md).
 
 ---
 
