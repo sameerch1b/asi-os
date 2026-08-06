@@ -1,0 +1,22 @@
+{
+  "name": "asi",
+  "owner": {
+    "name": "Sameer Chib",
+    "url": "https://www.linkedin.com/in/sameer-chib"
+  },
+  "description": "ASI OS — turn Claude Code into your personal AI Operating System. Built by ASI Intelligence.",
+  "plugins": [
+    {
+      "name": "asi-os",
+      "source": "./",
+      "description": "Personal AI Operating System starter kit. /onboard scaffolds and interviews, /audit scores the build, /level-up ships one automation a week, /grill pressure-tests a decision before you commit.",
+      "category": "productivity",
+      "keywords": [
+        "aios",
+        "ai-automation",
+        "decision-making",
+        "starter-kit"
+      ]
+    }
+  ]
+}

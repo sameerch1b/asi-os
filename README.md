@@ -118,14 +118,34 @@ The first two work in series: fix structure first, then capability planning beco
 
 ## Quick start
 
-1. **Clone the repo** to a working folder on your machine: `git clone https://github.com/sameerch1b/asi-os.git`
-2. **Open it in Claude Code** and run `/onboard`. Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
-3. **Use it for a week.** Bring real questions. Make real decisions. Log them via `/decision` (or just append to `decisions/log.md`).
-4. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
-5. **Day 14:** run `/level-up`. The 3Ms interview surfaces one automation worth building. Build it.
-6. **Week 3+:** weekly `/level-up` ritual. One shipped artifact per week.
-7. **Any hard call, any time:** run `/grill` before you commit. Five Stands, one verdict, one kill condition in the log.
-8. **Monthly:** run `/grill --reckon`. See which kill conditions fired and which calls came due. This is where the compounding shows up.
+### Install (pick one)
+
+**A. As a plugin (recommended).** Two lines in Claude Code, no clone, and the skills are available in every project:
+
+```
+/plugin marketplace add sameerch1b/asi-os
+/plugin install asi-os@asi
+```
+
+Then `cd` to wherever you want your AIOS to live, open Claude Code, and run `/onboard`. It builds the folder structure for you, then interviews you.
+
+**B. As a clone.** If you'd rather fork it and make it yours:
+
+```bash
+git clone https://github.com/sameerch1b/asi-os.git
+```
+
+Open the folder in Claude Code and run `/onboard`.
+
+### Then
+
+1. **Run `/onboard`.** Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
+2. **Use it for a week.** Bring real questions. Make real decisions. Log them by appending to `decisions/log.md`, or let `/grill` write the entry for you.
+3. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
+4. **Day 14:** run `/level-up`. The 3Ms interview surfaces one automation worth building. Build it.
+5. **Week 3+:** weekly `/level-up` ritual. One shipped artifact per week.
+6. **Any hard call, any time:** run `/grill` before you commit. Five Stands, one verdict, one kill condition in the log.
+7. **Monthly:** run `/grill --reckon`. See which kill conditions fired and which calls came due. This is where the compounding shows up.
 
 ---
 
@@ -147,6 +167,9 @@ ASI-OS/
 ├── decisions/
 │   └── log.md                       ← Append-only record of what was decided and why
 ├── archives/                        ← Old stuff. Don't delete. Move here.
+├── .claude-plugin/                  ← Plugin + marketplace manifests (install path A)
+│   ├── plugin.json
+│   └── marketplace.json
 └── .claude/
     └── skills/
         ├── onboard/SKILL.md
