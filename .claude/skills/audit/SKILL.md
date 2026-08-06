@@ -13,7 +13,7 @@ First run is the baseline. Re-run weekly to watch the score climb. That's the co
 
 ## Today's context
 
-- **Date:** !`date +%Y-%m-%d`
+- **Date:** establish it from session context, or run `date +%Y-%m-%d`. The freshness checks (30-day windows) and the report header both depend on it, so don't guess.
 - **Project root:** the current working directory
 
 ## The Four Cs (scored 25 each = 100 total)

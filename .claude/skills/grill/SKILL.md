@@ -22,8 +22,7 @@ Method in full: `references/the-grill.md`. Read it once before the first run.
 
 ## Today's context
 
-- **Date:** !`date +%Y-%m-%d`
-- **Project root:** the current working directory
+Review dates and the Reckoning sweep both depend on knowing today's date. Establish it before Step 3, either from session context or by running `date +%Y-%m-%d`. Never guess it, and never write a review date you inferred.
 
 ## Two modes
 
@@ -46,6 +45,8 @@ Read before asking anything, so questions are spent on judgment and not retrieva
 - `connections.md` (what data is actually reachable)
 - `decisions/log.md` (has a near-identical decision been made before? If yes, surface it now)
 - `references/the-grill.md`
+
+**Any of these may not exist yet, and that is fine.** On a fresh clone the `context/` files only appear after `/onboard` runs, and `/grill` is often the first skill someone reaches for. Read what is there, skip what is not, and **never block on a missing file or tell the user to run `/onboard` first.** The Five Stands work on a cold start; you just ask more and look up less. Mention it once, in one line, at the end: *"Worth running `/onboard` at some point, I'd have caught more of that from your own context."*
 
 Then two qualifying checks.
 

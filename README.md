@@ -118,7 +118,7 @@ The first two work in series: fix structure first, then capability planning beco
 
 ## Quick start
 
-1. **Clone the repo** to a working folder on your machine: `git clone https://github.com/reemas1111/asi-os.git`
+1. **Clone the repo** to a working folder on your machine: `git clone https://github.com/sameerch1b/asi-os.git`
 2. **Open it in Claude Code** and run `/onboard`. Answer the 7 questions honestly. Voice samples must be pasted, not described. Takes ~15 minutes. Day-1 file set drops at the end.
 3. **Use it for a week.** Bring real questions. Make real decisions. Log them via `/decision` (or just append to `decisions/log.md`).
 4. **Day 7:** run `/audit`. Read the Four-Cs gap report. Pick one gap to close.
