@@ -1,6 +1,6 @@
 {
   "name": "asi-os",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Turn Claude Code into your personal AI Operating System. /onboard interviews you and scaffolds your setup, /audit scores it, /level-up finds one automation a week, and /grill pressure-tests a decision before you commit to it.",
   "author": {
     "name": "Sameer Chib",
@@ -18,9 +18,9 @@
     "starter-kit"
   ],
   "skills": [
-    "./.claude/skills/onboard",
-    "./.claude/skills/audit",
-    "./.claude/skills/level-up",
-    "./.claude/skills/grill"
+    "./skills/onboard",
+    "./skills/audit",
+    "./skills/level-up",
+    "./skills/grill"
   ]
 }

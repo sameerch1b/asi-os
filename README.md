@@ -189,16 +189,23 @@ ASI-OS/
 ├── decisions/
 │   └── log.md                       ← Append-only record of what was decided and why
 ├── archives/                        ← Old stuff. Don't delete. Move here.
-├── .claude-plugin/                  ← Plugin + marketplace manifests (install path A)
+├── .claude-plugin/                  ← Plugin + marketplace manifests (plugin install)
 │   ├── plugin.json
 │   └── marketplace.json
+├── skills/                          ← Same four skills, where the plugin loader scans
+│   ├── onboard/SKILL.md
+│   ├── audit/SKILL.md
+│   ├── level-up/SKILL.md
+│   └── grill/SKILL.md
 └── .claude/
-    └── skills/
+    └── skills/                      ← Same four again, what a cloned folder loads
         ├── onboard/SKILL.md
         ├── audit/SKILL.md
         ├── level-up/SKILL.md
         └── grill/SKILL.md
 ```
+
+> The four skills are deliberately mirrored. Claude Code loads project skills from `.claude/skills/`, but plugin components have to sit at the repo root, so the plugin path needs `skills/`. Editing a skill means editing both. `diff -r .claude/skills skills` should print nothing.
 
 See `EXPANSIONS.md` for what to add as you grow (`projects/`, `templates/`, `scripts/`, `.claude/agents/`, sub-OS folders, etc.).
 
