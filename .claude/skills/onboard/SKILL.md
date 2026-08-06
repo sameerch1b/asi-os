@@ -1,6 +1,6 @@
 ---
 name: onboard
-description: Use on Day 1 of an ASI OS install, when someone says "set me up", "onboard me", "let's get started", "fill in my AIOS", or has just cloned the kit. Combined wizard — runs the 7-question intake AND scaffolds the Day-1 file set at the end. Idempotent — re-run any time after editing asi-os-intake.md.
+description: Use on Day 1 of an ASI OS install, when someone says "set me up", "onboard me", "let's get started", "fill in my AIOS", has just cloned the kit, or has just installed the asi-os plugin. Combined wizard — builds the kit's folder structure if it isn't there yet, runs the 7-question intake, then scaffolds the Day-1 file set at the end. Idempotent — re-run any time after editing asi-os-intake.md.
 ---
 
 ## What this skill does
@@ -16,13 +16,60 @@ Single combined wizard. Reads or writes `asi-os-intake.md` (the canonical intake
 
 ## Execution
 
+### Step 0: Scaffold the kit if it isn't here yet
+
+ASI OS installs two ways, and this step is what makes the plugin path work.
+
+- **Clone mode.** The user cloned the repo, so every folder and file already exists. Nothing to do here.
+- **Plugin mode.** The user ran `/plugin install asi-os@asi` and is sitting in some arbitrary folder with none of the kit's files. The skills exist; the structure does not. **You build it.**
+
+Detect by checking for `asi-os-intake.md` in the current working directory.
+
+**If it exists → clone mode. Skip to Step 1.**
+
+**If it does not exist → plugin mode.** Confirm the location before writing anything:
+
+> *"I'll set your AIOS up in `{cwd}`. That folder becomes your operating system: your context, your connections, your decisions log. Right place, or somewhere else?"*
+
+Wait for the answer. Never scaffold into a folder without confirming, and never scaffold into a directory that already holds an unrelated project unless the user says to.
+
+Once confirmed, create:
+
+```
+context/          (empty, filled in Step 3)
+references/
+decisions/
+archives/
+```
+
+Then write these four, copying from the plugin's own directory (`${CLAUDE_PLUGIN_ROOT}`) so the user gets their own editable copies:
+
+| File | Source |
+|---|---|
+| `asi-os-intake.md` | `${CLAUDE_PLUGIN_ROOT}/asi-os-intake.md`, blank template |
+| `connections.md` | `${CLAUDE_PLUGIN_ROOT}/connections.md`, blank 7-row table |
+| `decisions/log.md` | `${CLAUDE_PLUGIN_ROOT}/decisions/log.md`, format header only |
+| `CLAUDE.md` | `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md`, `{{placeholders}}` intact, filled in Step 3 |
+| `references/3ms-framework.md` | `${CLAUDE_PLUGIN_ROOT}/references/3ms-framework.md`, verbatim including its attribution block |
+| `references/the-grill.md` | `${CLAUDE_PLUGIN_ROOT}/references/the-grill.md`, verbatim |
+
+**Copy the two reference files, do not rewrite or summarise them.** `/level-up` and `/grill` both read them from `references/` at runtime, and `3ms-framework.md` carries Nate Herk's copyright and trademark notices that must travel with the content.
+
+**If `${CLAUDE_PLUGIN_ROOT}` is not set or the source files can't be read,** say so plainly and point the user at the clone path rather than reconstructing the files from memory:
+
+> *"I can't reach the plugin's files to copy them across. Quickest fix: `git clone https://github.com/sameerch1b/asi-os.git`, open that folder, and run `/onboard` again."*
+
+Then say one line and continue straight into Step 1. Do not make the user re-invoke anything:
+
+> *"Kit's in place. Seven questions, about fifteen minutes, and you can edit any answer later."*
+
 ### Step 1: Read the intake
 
 Read `asi-os-intake.md`. Check which Q1-Q7 sections have content vs. `[Your answer here]` placeholders.
 
 - **All filled** → skip Step 2, jump to Step 3 (scaffold).
 - **Some filled** → ask the user: "I see Q1, Q3, Q4 are answered. Want to fill the rest now, or scaffold from what's there?" Their call.
-- **None filled (fresh clone)** → run Step 2 conversationally.
+- **None filled (fresh clone or fresh plugin scaffold)** → run Step 2 conversationally.
 
 ### Step 2: The interview (7 questions, hard cap)
 
@@ -94,14 +141,17 @@ The Default Shift question seeds the Mindset framework before `/level-up` formal
 2. **Voice paste cannot be skipped.** If the user types samples mid-chat, refuse and tell them to paste from real writing.
 3. **One-shot scaffold.** After Step 2 ends, write Step 3 files in a single batch. No multi-turn confirmation. The user iterates by editing `asi-os-intake.md` and re-running.
 4. **Idempotent.** Re-running with an edited intake refreshes context files; backs up originals to `archives/intake-{ts}/`. Skips questions already answered unless the user wants to revise.
-5. **Closing screen is three lines.** Not a menu.
-6. **No extra skills generated.** Don't scaffold `/today`, `/draft`, `/connect`, etc. The kit ships 3 skills; the user authors more via `/level-up`.
-7. **Read-only on `references/3ms-framework.md`.** It already ships in the kit. Don't overwrite.
-8. **No `.env` writes.** Don't ask for API keys on Day 1. Connections come Day 2.
+5. **Closing screen is four lines.** Not a menu.
+6. **No extra skills generated.** Do not scaffold `/today`, `/draft`, `/connect`, etc. The kit ships 4 skills; the user authors more via `/level-up`.
+7. **Never author `references/3ms-framework.md` or `references/the-grill.md` yourself.** In clone mode they already exist and are read-only. In plugin mode you copy them byte-for-byte from `${CLAUDE_PLUGIN_ROOT}` in Step 0. Reconstructing either from memory loses content and, for the 3Ms, strips Nate Herk's copyright and trademark notices.
+8. **Confirm the folder before scaffolding.** Plugin mode writes into whatever directory the user is sitting in. Ask once, then write.
+9. **No `.env` writes.** Don't ask for API keys on Day 1. Connections come Day 2.
 
 ## Verification (for the implementer)
 
-- Cold-test: clone a fresh kit, run `/onboard`, fill 7 answers, scaffold runs, ask the wow prompt, response cites Q1 + Q3 + Q7 specifically. Generic = fail.
+- Cold-test (clone mode): clone a fresh kit, run `/onboard`, fill 7 answers, scaffold runs, ask the wow prompt, response cites Q1 + Q3 + Q7 specifically. Generic = fail.
+- **Cold-test (plugin mode):** install the plugin, `cd` to an EMPTY folder, run `/onboard`. Expected: asks where to set up, waits for the answer, creates the four folders, copies all six files including both reference docs byte-for-byte, then goes straight into Q1 with no second invocation. Failing to ask about the folder is a fail. Reconstructing `3ms-framework.md` or `the-grill.md` from memory instead of copying is a fail, check the copies still carry Nate Herk's copyright and trademark lines.
+- **Plugin mode in a non-empty folder:** run `/onboard` inside an unrelated existing project. Expected: asks before writing anything and accepts "somewhere else".
 - Idempotency: re-run `/onboard` with one Q3 priority changed. Expected: only `context/priorities.md` and `CLAUDE.md`'s priority section update; backup created in `archives/intake-{ts}/`.
 - Voice rejection: type a sample mid-chat. Expected: skill refuses, asks for paste.
 

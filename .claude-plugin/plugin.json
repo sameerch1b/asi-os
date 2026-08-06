@@ -1,0 +1,26 @@
+{
+  "name": "asi-os",
+  "version": "1.1.0",
+  "description": "Turn Claude Code into your personal AI Operating System. /onboard interviews you and scaffolds your setup, /audit scores it, /level-up finds one automation a week, and /grill pressure-tests a decision before you commit to it.",
+  "author": {
+    "name": "Sameer Chib",
+    "url": "https://www.linkedin.com/in/sameer-chib"
+  },
+  "homepage": "https://asiintelligence.io",
+  "repository": "https://github.com/sameerch1b/asi-os",
+  "license": "MIT",
+  "keywords": [
+    "aios",
+    "claude-code",
+    "ai-automation",
+    "decision-making",
+    "personal-knowledge-management",
+    "starter-kit"
+  ],
+  "skills": [
+    "./.claude/skills/onboard",
+    "./.claude/skills/audit",
+    "./.claude/skills/level-up",
+    "./.claude/skills/grill"
+  ]
+}
