@@ -123,9 +123,11 @@ The first two work in series: fix structure first, then capability planning beco
 **A. As a plugin (recommended).** Two lines in Claude Code, no clone, and the skills are available in every project:
 
 ```
-/plugin marketplace add sameerch1b/asi-os
+/plugin marketplace add https://github.com/sameerch1b/asi-os.git
 /plugin install asi-os@asi
 ```
+
+> Use the full HTTPS URL, not the `sameerch1b/asi-os` shorthand. The shorthand resolves to SSH, which fails with `Host key verification failed` unless you've already got `github.com` in your `known_hosts`. HTTPS works on a clean machine.
 
 Then `cd` to wherever you want your AIOS to live, open Claude Code, and run `/onboard`. It builds the folder structure for you, then interviews you.
 
